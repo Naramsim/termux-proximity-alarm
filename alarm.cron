@@ -1,0 +1,5 @@
+*/10 * * * * bash check_battery.sh
+0 0 * * * echo false > low_battery_notification_sent
+*/10 * * * * bash proximity.sh
+#0 7 * * * bash ./enable_wifi.sh false
+#0 15 * * * bash ./enable_wifi.sh true
