@@ -1,46 +1,49 @@
 # Termux proximity alarm
 
-Use your old Android phone as an alarm to detect open ports/windows. Phone proximity sensors can usually detect if an object is farther or closer than 5cm. By using this sensor we can detect when ports or windows are open by placing the phone 90 degrees from a closed door. We can then connect to our router and check if any house-member devices are connected and if not send a notification through Wifi, Ntfy and Gmail to selected recipients including a picture and a short recording.
+Use your old Android phone as an alarm to detect open ports/windows.
 
-You can use this code as it is or as a boilerplate to interact with other sensors to detect potential thieves.
+Phone proximity sensors can usually detect if an object is farther or closer than 5cm. By using this sensor we can detect when ports or windows are open by placing the phone 90 degrees from a closed door. We can then connect to our router and check if any house-member devices are connected and, if not, send a notification through Wifi, Ntfy and Gmail to selected recipients including a picture and a short recording.
+
+You can use this code as-is or as a boilerplate to interact with other phone-sensors to detect potential thieves.
 
 ### Requirements
 
 - An Android phone
 - Developer options/USB debugging enabled
-- termux, termux-api, termux-boo installed and configured
+- termux, termux-api, termux-boot installed and configured
   - https://github.com/termux/termux-app/releases
   - https://github.com/termux/termux-api/releases
   - https://github.com/termux/termux-boot/releases
-  - `adb install `
+  - `adb install .apk`
 - Open at least once termux and termux-boot
 - Give camera and mic permissions to termux-api
 - Identify the proximity sensor name with `termux-sensor -l`. It should return `0` or `5`
 
 ### Install
 
-Copy this repo to `/data/user/0/com.termux/files/home`.
+Copy this repo to `/data/user/0/com.termux/files/home/`.
 
 ```sh
-# Fill bootsrap.sh
-bash bootstrap.sh
+cp config.sample.env config.env
+# edit config.env
+bash bootstrap.sh # Or review/execute each command by hand
 # cat alarm.cron
-crontab -e
+crontab -e # Decide when the alarm should run
 # reboot your phone and unlock
-# profit
+# Check if something is working, else open an issue/debug
 ```
 
 ### Prolong battery span
 
-Install https://github.com/RikkaApps/Shizuku/releases and https://github.com/samolego/Canta/releases to remove bloatware. Open Shizuku
+Install https://github.com/RikkaApps/Shizuku/releases and https://github.com/samolego/Canta/releases to remove bloatware. Open Shizuku,
 
 ```sh
 adb shell 'sh /storage/emulated/0/Android/data/moe.shizuku.privileged.api/start.sh'
 ```
 
-Allow Canta, open it and uninstall.
+Allow Canta, open it and uninstall unneccessary services.
 
-Remove all permissions from Google Play services, even the one for modifying system settings.
+Remove all permissions from Google Play services, even the hidden modify-system-settings' one.
 
 ### Other detection methods not implemented
 
