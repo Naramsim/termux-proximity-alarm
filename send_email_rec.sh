@@ -8,7 +8,7 @@ if [ ! -f "$attachment" ]; then
   exit 1
 fi
 
-if [ "$(head -n1 charging.sensor)" = 'true' ]; then
+if [ "$(head -n1 data/charging.sensor)" = 'true' ]; then
   exit 0
 fi
 

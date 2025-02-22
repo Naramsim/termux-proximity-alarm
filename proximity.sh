@@ -1,16 +1,17 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-if [ -f alarm.pid ]; then
-  if ps --no-headers -p "$(cat alarm.pid)" >/dev/null 2>&1; then
+declare -r hits_threshold=2
+declare -r alarm_folder='./data'
+declare -i hits=0
+source config.env
+declare -r sensor_filename="$alarm_folder/$(tr -cd '[a-zA-Z0-9]._-' "$sensor_name").sensor"
+
+if [ -f "$alarm_folder/alarm.pid" ]; then
+  if ps --no-headers -p "$(cat $alarm_folder/alarm.pid)" >/dev/null 2>&1; then
     exit 0
   fi
 fi
-echo $BASHPID > alarm.pid
-
-declare -r hits_threshold=2
-declare -r alarm_folder='./alarm'
-declare -i hits=0
-source config.env
+echo $BASHPID > "$alarm_folder/alarm.pid"
 ./init.sh
 
 function pic() {
@@ -35,17 +36,17 @@ function clean_exit() {
   exit 0
 }
 
-function restart_proximity_sensor() {
+function restart_sensor() {
   termux-sensor -c >/dev/null 2>&1
-  echo '' > ./proximity.sensor
-  termux-sensor -s "$proximity_sensor_name" -d 1000 > ./proximity.sensor 2>&1 &
+  echo '' > "$sensor_filename"
+  termux-sensor -s "$sensor_name" -d 1000 > "$sensor_filename" 2>&1 &
   trap 'clean_exit' SIGINT
 }
 
-restart_proximity_sensor
+restart_sensor
 
 while true; do
-  if tail -n7 ./proximity.sensor | grep -q -F -e ' 0'; then
+  if tail -n7 "$sensor_filename" | grep -q -F -e ' 0'; then
     (( hits+=1 ))
     if [ "$hits" -gt $(( hits_threshold + 2 )) ]; then
       sleep 300

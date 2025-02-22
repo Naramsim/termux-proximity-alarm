@@ -9,7 +9,7 @@ passwd
 pkg upgrade -y
 pkg install openssh cronie termux-api -y
 mkdir -p $HOME/.termux/boot/
-mkdir alarm
+mkdir data
 
 cat >$HOME/.termux/boot/boot.sh <<EOL
 #!/data/data/com.termux/files/usr/bin/bash
