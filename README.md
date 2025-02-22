@@ -5,7 +5,7 @@ Use your old Android phone as an alarm to detect open ports/windows.
 Phone proximity sensors can usually detect if an object is farther or closer than 5cm. By using these sensors we can detect when ports or windows are open by placing the phone 90 degrees from a closed door. When the door is opened the proximity sensor will trigger. To greatly reduce false positives we can then check if no one is at home (and thus the door was opened by someone we don't know) by connecting to our router and check if house-member devices are connected or not. In the latter case, send a notification on [Ntfy](https://docs.ntfy.sh/) and email to selected recipients including a picture and a short recording of what's going on. Hopefully this can alert you if an intrusion is happening.
 
 > [!IMPORTANT]
-> You can use this code as-is or as a boilerplate to interact with other phone-sensors to detect potential thieves. Most probably you will need to modify part of the code to better suit your needs. Please review the code before opening issues
+> You can use this code as-is or as a boilerplate to interact with other phone-sensors to detect potential burglars. Most probably you will need to modify part of the code to better suit your needs. Please review the code before opening issues
 
 ### Requirements
 
