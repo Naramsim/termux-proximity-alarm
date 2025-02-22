@@ -1,3 +1,12 @@
+# Should always be present if you want to be notified about low battery
 */10 * * * * bash check_battery.sh
 0 0 * * * echo false > data/low_battery_notification_sent
-* 15 * * * bash proximity.sh
+
+# Example 1. Turn on constantly the alarm in case Android OS kills it.
+*/10 * * * * bash proximity.sh
+
+# Example 2. Turn on Wifi and alarm at 3pm, turn them off at 6am
+0 15 * * * bash enable_wifi.sh
+1 15 * * * bash proximity.sh
+0 6 * * * kill -2 $(cat data/alarm.pid)
+1 6 * * * bash enable_wifi.sh false

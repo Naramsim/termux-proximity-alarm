@@ -1,3 +1,5 @@
 *.env
 !config.sample.env
 data/
+*.cron
+!alarm.cron
