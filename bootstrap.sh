@@ -5,7 +5,6 @@
 
 HOME='/data/user/0/com.termux/files/home'
 cd $HOME || exit 1
-passwd
 pkg upgrade -y
 pkg install openssh cronie termux-api -y
 mkdir -p $HOME/.termux/boot/
