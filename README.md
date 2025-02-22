@@ -78,7 +78,7 @@ Use `cron` to schedule the timing for your alarm.
 ### Gotchas
 
 - The router connection phase is customized for my Sky router. If you own a different router you'll need to rewrite the logic of `is_nobody_home.sh` file.
-- If the alarm stops working, most probably your Android OS is killing Termux or the alarm process. Check out https://dontkillmyapp.com/ to find ways to stop it from doind so. Alternatively you can instruct a frequent cronjob to keep the service alive.
+- If the alarm stops working, most probably your Android OS is killing Termux or the alarm process. Check out https://dontkillmyapp.com/ to find ways to stop it from doing so. Alternatively you can instruct a frequent cronjob to keep the service alive or play with [termux-job-scheduler](https://wiki.termux.com/wiki/Termux-job-scheduler)
 
 ### Other detection methods not implemented
 
