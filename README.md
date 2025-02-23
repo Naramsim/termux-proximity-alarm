@@ -42,20 +42,19 @@ crontab -e # Decide when the alarm should run. By default it runs on boot and th
 
 | Key | Value |
 | --- | --- |
-| app_name | `android-alarm` |
-| device_name | A name to identify which phone you are using |
-| ntfy_topic | A [ntfy.sh](https://docs.ntfy.sh/) topic to publish messages to |
-| gmail_auth | A string `email:pass` used to send emails. `pass` has to be an [app pasword](https://support.google.com/mail/answer/185833?hl=en) if you use Gmail |
-| sensor_name | By running `termux-sensor -l` you should understand which is the codename for your proximity sensor. Then save it here |
-| router_user | Username of your router |
-| router_pass | Password of your router |
-| our_devices | Space separated home-members devices to look for in the router state. You should list here all the phones that are normally attached to the Wifi |
-| offline_scan | `true` or `false`, whether to constantly have Wifi enabled or disabled |
-| mail1_subject | Subject text of the first mail sent when a detection is fired |
-| mail1_object | Object text of the first mail |
-| mail2_subject | Subject text of the second mail |
-| mail2_object | Object text of the second mail |
-| mail_rcpt | Comma and space separated email recipients |
+| `device_name` | A name to identify which phone you are using |
+| `ntfy_topic` | A [ntfy.sh](https://docs.ntfy.sh/) topic to publish messages to |
+| `gmail_auth` | A string `email:pass` used to send emails. `pass` has to be an [app pasword](https://support.google.com/mail/answer/185833?hl=en) if you use Gmail |
+| `sensor_name` | By running `termux-sensor -l` you should understand which is the codename for your proximity sensor. Then save it here |
+| `router_user` | Username of your router |
+| `router_pass` | Password of your router |
+| `our_devices` | Space separated home-members devices to look for in the router state. You should list here all the phones that are normally attached to the Wifi |
+| `offline_scan` | `true` or `false`, whether to constantly have Wifi enabled or disabled |
+| `mail1_subject` | Subject text of the first mail sent when a detection is fired |
+| `mail1_object` | Object text of the first mail |
+| `mail2_subject` | Subject text of the second mail |
+| `mail2_object` | Object text of the second mail |
+| `mail_rcpt` | Comma and space separated email recipients |
 
 ### Lifecycle
 
