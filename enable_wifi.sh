@@ -11,7 +11,7 @@ function force_wifi() {
 termux-wifi-enable "${1:-true}" >/dev/null 2>&1
 
 if [ "${1:-true}" = 'true' ]; then
-  declare -r max_wait=10
+  declare -r max_wait=14
   declare -i counter=0
   until termux-wifi-connectioninfo | grep 'supplicant_state' | grep -q 'COMPLETED'; do
     ((counter+=1))

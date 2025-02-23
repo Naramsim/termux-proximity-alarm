@@ -57,7 +57,7 @@ crontab -e # Decide when the alarm should run. By default it runs on boot and th
 
 ### Lifecycle
 
-By adding a file under `~/.termux/boot` we start `sshd`, `crond` and the alarm when the phone boots. The phone then waits 60s and arms itself. The proximity sensor is read every 1s and if for more than two consecutive occurences the value reports an open door then we connect to our router page and check if `our_devices` devices are connected. If all of those are not present, no one is at home and probably the door was opened by a burglar. We then fire a notification on Ntfy and send first an email with attached a picture for us to review and secondly a 20s recording. Then the alarm sleeps for 120s and resumes its normal functioning.
+By adding a [boot-script](https://github.com/Naramsim/termux-proximity-alarm/blob/872071db76b2c3e3e85561f7ad81aae55b5e95b4/bootstrap.sh#L13) under `~/.termux/boot` we start the alarm when the phone boots, alternatively `cron` can be used to [schedule](https://github.com/Naramsim/termux-proximity-alarm/blob/872071db76b2c3e3e85561f7ad81aae55b5e95b4/alarm.cron) start and stop. The phone then waits 60s and arms itself. The proximity sensor is read every 1s and if for more than two consecutive occurences the value reports an open door then we connect to our router page and check if `our_devices` devices are connected. If all of those are not present, no one is at home and probably the door was opened by a burglar. We then fire a notification on Ntfy and send first an email with a picture attached for us to review and secondly a 20s recording. Then the alarm sleeps for 120s and resumes its normal functioning.
 
 ### Prolong battery span
 
