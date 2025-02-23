@@ -3,7 +3,7 @@
 source config.env
 
 if termux-battery-status | grep -q 'DISCHARGING'; then
-  echo 'false' > charging.sensor
+  echo 'false' > data/charging.sensor
   percentage=$(termux-battery-status | grep 'percentage')
   percentage=${percentage%,*}
   percentage=${percentage#*:}
